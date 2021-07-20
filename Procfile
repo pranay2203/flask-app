@@ -1,1 +1,1 @@
-web: gunicorn main:website
+worker: gunicorn main:website
