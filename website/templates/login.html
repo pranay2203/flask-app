@@ -1,5 +1,7 @@
 {% extends "base.html" %} {% block title %}Login{% endblock %} {% block content
 %}
+
+
 <form method="POST">
   <h3 align="center">Login</h3>
   <div class="form-group">
@@ -23,7 +25,20 @@
     />
   </div>
   <br />
+
   <button type="submit" class="btn btn-primary">Login</button>
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <div type="submit" class="g-signin2" data-onsuccess="onSignIn"></div>
+
+    <script>
+    function onSignIn(googleUserm, method) {
+    var id_token = googleUser.getAuthResponse().id_token;
+    window.location.replace('https://deploy-flask2203.herokuap.com/'+ id_token)
+
+        /* var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://deploy-flask2203.herokuapp.com/tokensignin');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send('idtoken=' + id_token); */
+    }
+    </script>
 </form>
 {% endblock %}
